@@ -10,21 +10,31 @@
   </head>
   <body>
     <div id="carousel">
+      <div class="carousel-slide">1</div>
+      <div class="carousel-slide">2</div>
+      <div class="carousel-slide">3</div>
+      <div class="carousel-slide">4</div>
+      <div class="carousel-slide">5</div>
       <div id="carousel-controls">
-        <button type="button">ANT</button>
-        <button type="button">1</button>
-        <button type="button">2</button>
-        <button type="button">3</button>
-        <button type="button">4</button>
-        <button type="button">5</button>
-        <button type="button">PRÓX</button>
-      </div>
-      <div id="carousel-images">
-        <div class="image current"></div>
-        <div class="image"></div>
-        <div class="image"></div>
-        <div class="image"></div>
-        <div class="image"></div>
+        <button type="button" id="previous-button">Previous</button>
+        <div id="jump-to-buttons">
+          <button type="button" class="jump-to-button" data-btn-index="0">
+            1
+          </button>
+          <button type="button" class="jump-to-button" data-btn-index="1">
+            2
+          </button>
+          <button type="button" class="jump-to-button" data-btn-index="2">
+            3
+          </button>
+          <button type="button" class="jump-to-button" data-btn-index="3">
+            4
+          </button>
+          <button type="button" class="jump-to-button" data-btn-index="4">
+            5
+          </button>
+        </div>
+        <button type="button" id="next-button">Next</button>
       </div>
     </div>
     <script src="./index.js"></script>
