@@ -22,12 +22,12 @@ const carousel = (() => {
       carouselSlides.insertAdjacentHTML(
         "beforeend",
         `<div class="carousel-slide" data-slide-index="${i}"
-        style="background-image: url(${slidesURLs[i]})">${i + 1}</div>`
+        style="background-image: url(${slidesURLs[i]})"></div>`
       );
       jumpToButtons.insertAdjacentHTML(
         "beforeend",
         `<button type="button" class="jump-to-button" 
-        data-btn-index="${i}">O</button>`
+        data-btn-index="${i}"></button>`
       );
     }
 
@@ -69,7 +69,18 @@ const carousel = (() => {
     currentSlide = index;
   }
 
+  (function timeout() {
+    setTimeout(function () {
+      nextSlide();
+      timeout();
+    }, 5000);
+  })();
+
   return { addSlides };
 })();
 
-carousel.addSlides(["1", "1", "1", "1", "1", "1", "1"]);
+carousel.addSlides([
+  "https://images.unsplash.com/photo-1667986968934-bf1fd9db241f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80",
+  "https://images.unsplash.com/photo-1660836491055-9b2d8950a63c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1176&q=80",
+  "https://images.unsplash.com/photo-1668094497457-29f4bd775c95?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+]);
