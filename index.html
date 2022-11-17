@@ -6,34 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./reset.css" />
     <link rel="stylesheet" href="./styles.css" />
-    <title>Carrossel</title>
+    <title>Carousel</title>
   </head>
   <body>
     <div id="carousel">
-      <div class="carousel-slide">1</div>
-      <div class="carousel-slide">2</div>
-      <div class="carousel-slide">3</div>
-      <div class="carousel-slide">4</div>
-      <div class="carousel-slide">5</div>
+      <div id="carousel-slides"></div>
+
       <div id="carousel-controls">
         <button type="button" id="previous-button">Previous</button>
-        <div id="jump-to-buttons">
-          <button type="button" class="jump-to-button" data-btn-index="0">
-            1
-          </button>
-          <button type="button" class="jump-to-button" data-btn-index="1">
-            2
-          </button>
-          <button type="button" class="jump-to-button" data-btn-index="2">
-            3
-          </button>
-          <button type="button" class="jump-to-button" data-btn-index="3">
-            4
-          </button>
-          <button type="button" class="jump-to-button" data-btn-index="4">
-            5
-          </button>
-        </div>
+        <div id="jump-to-buttons"></div>
         <button type="button" id="next-button">Next</button>
       </div>
     </div>
