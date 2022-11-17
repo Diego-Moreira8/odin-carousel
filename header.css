@@ -1,9 +1,42 @@
+:root {
+  --header-background: #e8a200;
+  --header-font-color: #f8f8f8;
+}
+
 header {
+  font-family: sans-serif;
   height: 50px;
-  background-color: rgb(56, 56, 56);
-  color: #fff;
+  background-color: var(--header-font-color);
+  display: flex;
+  gap: 64px;
+  align-items: center;
+  padding: 0 64px;
+}
+
+#brand a {
+  color: var(--header-background);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 2rem;
+  padding: 100% 16px;
+}
+
+#main-nav-links {
   display: flex;
   align-items: center;
-  padding: 0 32px;
+}
+
+.nav-link.dropdown,
+.nav-link a {
+  color: var(--header-background);
+  text-decoration: none;
   font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 100% 16px;
+}
+
+.nav-link.dropdown:hover,
+.nav-link a:hover {
+  background-color: rgba(0, 0, 0, 0.1);
 }
