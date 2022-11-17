@@ -42,8 +42,8 @@ const carousel = (() => {
     changeSlide(0);
   }
 
-  function addSlide(url) {
-    slidesURLs.push(url);
+  function addSlides(linksArray) {
+    slidesURLs = linksArray;
     renderSlidesAndButtons();
   }
 
@@ -69,17 +69,7 @@ const carousel = (() => {
     currentSlide = index;
   }
 
-  return { addSlide };
+  return { addSlides };
 })();
 
-carousel.addSlide("1");
-carousel.addSlide("2");
-carousel.addSlide("3");
-carousel.addSlide("4");
-carousel.addSlide("4");
-carousel.addSlide("4");
-carousel.addSlide("4");
-carousel.addSlide("4");
-carousel.addSlide("4");
-carousel.addSlide("4");
-carousel.addSlide("4");
+carousel.addSlides(["1", "1", "1", "1", "1", "1", "1"]);
