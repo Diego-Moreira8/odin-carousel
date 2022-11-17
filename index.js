@@ -2,7 +2,9 @@ const carousel = (() => {
   const carousel = document.querySelector("#carousel");
 
   const carouselSlides = carousel.querySelector("#carousel-slides");
+
   let allSlides = carousel.querySelectorAll(".carousel-slide");
+  let allJumpToBtns = carousel.querySelectorAll(".jump-to-button");
 
   const jumpToButtons = carousel.querySelector("#jump-to-buttons");
 
@@ -31,7 +33,8 @@ const carousel = (() => {
       );
     }
 
-    jumpToButtons.querySelectorAll(".jump-to-button").forEach((btn) =>
+    allJumpToBtns = carousel.querySelectorAll(".jump-to-button");
+    allJumpToBtns.forEach((btn) =>
       btn.addEventListener("click", (e) => {
         changeSlide(e.target.getAttribute("data-btn-index"));
       })
@@ -64,8 +67,13 @@ const carousel = (() => {
   }
 
   function changeSlide(index) {
-    allSlides.forEach((slide) => slide.classList.remove("active"));
-    allSlides[index].classList.add("active");
+    const groups = [allSlides, allJumpToBtns];
+
+    groups.forEach((group) => {
+      group.forEach((slide) => slide.classList.remove("active"));
+      group[index].classList.add("active");
+    });
+
     currentSlide = index;
   }
 
