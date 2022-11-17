@@ -1,20 +1,20 @@
 :root {
-  --header-background: #e8a200;
-  --header-font-color: #f8f8f8;
+  --header-background: #f8f8f8;
+  --header-font-color: #e8a200;
 }
 
 header {
-  font-family: sans-serif;
-  height: 50px;
-  background-color: var(--header-font-color);
   display: flex;
-  gap: 64px;
   align-items: center;
+  gap: 64px;
   padding: 0 64px;
+  height: 50px;
+  background-color: var(--header-background);
+  font-family: sans-serif;
 }
 
 #brand a {
-  color: var(--header-background);
+  color: var(--header-font-color);
   text-decoration: none;
   font-weight: bold;
   font-size: 2rem;
@@ -27,16 +27,38 @@ header {
 }
 
 .nav-link.dropdown,
-.nav-link a {
-  color: var(--header-background);
-  text-decoration: none;
-  font-weight: bold;
+.nav-link > a {
+  position: relative;
+}
+
+.nav-link.dropdown,
+.nav-link > a,
+.dropdown-link > a,
+.dropdown-link.dropdown {
+  display: flex;
+  gap: 16px;
+  padding: 8px 16px;
   font-size: 1rem;
+  font-weight: bold;
+  color: var(--header-font-color);
+  text-decoration: none;
+  white-space: nowrap;
   cursor: pointer;
-  padding: 100% 16px;
 }
 
 .nav-link.dropdown:hover,
-.nav-link a:hover {
+.nav-link > a:hover,
+.dropdown-link > a:hover,
+.dropdown-link.dropdown:hover {
   background-color: rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-container {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1;
+  background-color: var(--header-background);
+  padding: 8px 0px;
+  box-shadow: 0px 2px 5px -3px rgba(0, 0, 0, 0.5);
 }
