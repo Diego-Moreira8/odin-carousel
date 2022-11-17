@@ -14,7 +14,7 @@ const carousel = (() => {
   let slidesURLs = [];
   let currentSlide = 0;
 
-  function renderSlides() {
+  function renderSlidesAndButtons() {
     jumpToButtons.innerHTML = "";
     carouselSlides.innerHTML = "";
 
@@ -30,19 +30,27 @@ const carousel = (() => {
         data-btn-index="${i}">O</button>`
       );
     }
+
+    jumpToButtons.querySelectorAll(".jump-to-button").forEach((btn) =>
+      btn.addEventListener("click", (e) => {
+        changeSlide(e.target.getAttribute("data-btn-index"));
+      })
+    );
+
     allSlides = carousel.querySelectorAll(".carousel-slide");
+
     changeSlide(0);
   }
 
   function addSlide(url) {
     slidesURLs.push(url);
-    renderSlides();
+    renderSlidesAndButtons();
   }
 
   function nextSlide() {
     if (currentSlide < slidesURLs.length - 1) {
       changeSlide(++currentSlide);
-    } else if (currentSlide >= slidesURLs.length - 1 || currentSlide < 0) {
+    } else if (currentSlide >= slidesURLs.length - 1) {
       changeSlide(0);
     }
   }
