@@ -54,8 +54,7 @@ header {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-.dropdown-container,
-.submenu-container {
+.dropdown-container {
   position: absolute;
   z-index: 1;
   background-color: var(--header-background);
@@ -63,24 +62,31 @@ header {
   box-shadow: 2px 2px 2px -1px rgba(0, 0, 0, 0.5);
 }
 
-.dropdown-container {
-  top: 100%;
+.nav-link > .dropdown-container {
+  top: calc(100% - 16px);
   left: 0;
 }
 
 .dropdown-link > .dropdown-container {
   top: -8px;
-  left: 100%;
+  left: calc(100% - 8px);
 }
 
-.dropdown-container,
-.submenu-container {
+.dropdown-container {
   opacity: 0;
   pointer-events: none;
+  transition: all ease-in-out 150ms;
 }
 
-.dropdown-container.active,
-.submenu-container.active {
+.dropdown-container.active {
   opacity: 1;
   pointer-events: all;
+}
+
+.nav-link > .dropdown-container.active {
+  top: 100%;
+}
+
+.dropdown-link > .dropdown-container.active {
+  left: 100%;
 }
