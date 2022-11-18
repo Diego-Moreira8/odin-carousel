@@ -68,7 +68,7 @@ header {
   left: 0;
 }
 
-.submenu-container {
+.dropdown-link > .dropdown-container {
   top: -8px;
   left: 100%;
 }
