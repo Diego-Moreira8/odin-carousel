@@ -1,0 +1,18 @@
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+footer div:first-of-type {
+  margin-right: 8px;
+}
+
+footer > a {
+  padding: 8px 16px;
+  transition: background-color 150ms;
+}
+
+footer > a:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+}
