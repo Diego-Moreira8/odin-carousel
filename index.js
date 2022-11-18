@@ -1,5 +1,6 @@
 import navBar from "./header.js";
 import carousel from "./carousel.js";
+import myFooter from "./my-footer.js";
 
 navBar();
 
@@ -14,3 +15,5 @@ carousel.addSlides([
   "https://images.unsplash.com/photo-1432139555190-58524dae6a55?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1176&q=80",
   "https://images.unsplash.com/photo-1496412705862-e0088f16f791?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
 ]);
+
+myFooter("#000", "#fff");
