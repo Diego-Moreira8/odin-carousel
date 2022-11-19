@@ -1,14 +1,14 @@
 #carousel {
   background-color: rgb(222, 222, 222);
   width: 100%;
-  height: 500px; /* Custom carousel height */
+  height: 300px; /* Custom carousel height */
   position: relative;
   display: flex;
   justify-content: center;
 }
 
 #carousel-slides {
-  width: 1280px; /* Custom slide width */
+  width: 100%; /* Custom slide width */
   height: inherit;
 }
 
