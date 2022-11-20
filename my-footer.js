@@ -12,7 +12,7 @@ export default function myFooter(bgc, color) {
   footer.innerHTML = `
   <div>Construído por Diego Moreira em 2022</div>
 
-  <div>●</div>
+  <div>
 
   <a href="mailto:diego.moreira529@gmail.com" style="color: ${color}">
     <span class="material-symbols-outlined"> mail </span>
@@ -51,6 +51,7 @@ export default function myFooter(bgc, color) {
       />
     </svg>
   </a>
+  </div>
   `;
 
   footer.style.backgroundColor = bgc;
