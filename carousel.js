@@ -1,19 +1,17 @@
 export default (function carousel() {
   const carousel = document.querySelector("#carousel");
-
   const carouselSlides = carousel.querySelector("#carousel-slides");
-
   let allSlides = carousel.querySelectorAll(".carousel-slide");
   let allJumpToBtns = carousel.querySelectorAll(".jump-to-button");
-
   const jumpToButtons = carousel.querySelector("#jump-to-buttons");
 
   carousel
     .querySelector("#previous-button")
     .addEventListener("click", prevSlide);
+
   carousel.querySelector("#next-button").addEventListener("click", nextSlide);
 
-  let slidesURLs = [];
+  let slidesURLs = []; // Array with links to the images
   let currentSlide = 0;
 
   function renderSlidesAndButtons() {
