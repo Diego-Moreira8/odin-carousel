@@ -1,0 +1,13 @@
+.carousel {
+  background-color: #ddd;
+}
+
+.slide {
+  display: block;
+  width: 200px;
+  visibility: hidden;
+}
+
+.slide.active {
+  visibility: visible;
+}
