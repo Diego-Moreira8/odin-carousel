@@ -11,7 +11,8 @@ class Carousel {
   }
 
   renderCurrentSlide() {
-    const currentSlideElement = document.querySelector(".content > .active");
+    const currentSlideElement =
+      this.content.querySelector(".content > .active");
 
     if (currentSlideElement) {
       currentSlideElement.classList.remove("active");
@@ -74,5 +75,7 @@ const images = [
   "https://images.unsplash.com/photo-1710831784683-73228be0a085?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 ];
 const carousel = new Carousel(document.querySelector("#root"), images);
+const carousel2 = new Carousel(document.querySelector("#root"), images);
 
 carousel.render();
+carousel2.render();
