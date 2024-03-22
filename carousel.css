@@ -17,9 +17,11 @@
   position: absolute;
   opacity: 0;
   transition: opacity 1000ms;
+  pointer-events: none;
 }
 
 .slide.active {
+  pointer-events: all;
   opacity: 1;
 }
 
