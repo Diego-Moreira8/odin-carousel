@@ -5,14 +5,15 @@ class Carousel {
     this.delay = delay;
 
     this.imgElements = this.generateImgElements();
-    this.content = document.createElement("div");
+    this.slidesContainer = document.createElement("div");
     this.currentSlide = 0;
     this.intervalId;
   }
 
   renderCurrentSlide(event) {
-    const currentSlideElement =
-      this.content.querySelector(".content > .active");
+    const currentSlideElement = this.slidesContainer.querySelector(
+      ".slides-container > .active"
+    );
 
     if (currentSlideElement) {
       currentSlideElement.classList.remove("active");
@@ -62,7 +63,7 @@ class Carousel {
 
     carousel.className = "carousel";
 
-    this.content.className = "content";
+    this.slidesContainer.className = "slides-container";
 
     prevSlideBtn.textContent = "<";
     prevSlideBtn.className = "prev-slide";
@@ -71,6 +72,8 @@ class Carousel {
     nextSlideBtn.textContent = ">";
     nextSlideBtn.className = "next-slide";
     nextSlideBtn.addEventListener("click", (e) => this.nextSlide(e));
+
+    jumpToBtnsContainer.className = "jump-buttons-container";
 
     for (let i = 0; i < this.imgElements.length; i++) {
       const btn = document.createElement("button");
@@ -90,8 +93,8 @@ class Carousel {
 
     this.renderCurrentSlide();
 
-    this.imgElements.forEach((img) => this.content.appendChild(img));
-    carousel.appendChild(this.content);
+    this.imgElements.forEach((img) => this.slidesContainer.appendChild(img));
+    carousel.appendChild(this.slidesContainer);
     carousel.appendChild(prevSlideBtn);
     carousel.appendChild(jumpToBtnsContainer);
     carousel.appendChild(nextSlideBtn);
@@ -105,7 +108,7 @@ const images = [
   "https://images.unsplash.com/photo-1710831784683-73228be0a085?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   "https://images.unsplash.com/photo-1557227065-79fb4eb2571c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 ];
-const carousel = new Carousel(document.querySelector("#root"), images, 2000);
+const carousel = new Carousel(document.querySelector("#root"), images, 3000);
 const carousel2 = new Carousel(document.querySelector("#root"), images, 500);
 
 carousel.render();
