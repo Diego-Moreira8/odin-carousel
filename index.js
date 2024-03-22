@@ -1,18 +1,30 @@
+/**
+ * @typedef {Object} SlideData
+ * @property {string} imgSrc - Path to the image that will be added to the slide
+ * @property {string} imgAlt - Alternative text for the slide image
+ * @property {string} slideTitle - Text for the slide title attribute
+ * @property {string} url - The URL that the slide will redirect to
+ */
+
 class Carousel {
-  constructor(parentElement, imgLinks = [], delay) {
+  /**
+   * @param {Node} parentElement - A node with the element that the carousel will append to.
+   * @param {SlideData[]} data - An array of SlideData objects
+   * @param {number} delay - Time in ms to the autoplay
+   */
+  constructor(parentElement, data, delay) {
     this.parentElement = parentElement;
-    this.imgLinks = [...imgLinks];
+    this.data = [...data];
     this.delay = delay;
 
-    this.imgElements = this.generateImgElements();
+    this.slides = this.generateSlides();
     this.navButtons = this.generateNavButtons();
-    this.slidesContainer = document.createElement("div");
     this.currentSlide = 0;
     this.intervalId;
   }
 
   renderCurrentSlide(event) {
-    const currentSlideElement = this.imgElements.find((img) =>
+    const currentSlideElement = this.slides.find((img) =>
       img.classList.contains("active")
     );
 
@@ -23,7 +35,7 @@ class Carousel {
     if (currentSlideElement) currentSlideElement.classList.remove("active");
     if (currentNavBtn) currentNavBtn.classList.remove("active");
 
-    this.imgElements[this.currentSlide].classList.add("active");
+    this.slides[this.currentSlide].classList.add("active");
     this.navButtons[this.currentSlide].classList.add("active");
 
     // Restart only when a slide is selected by the user
@@ -32,32 +44,41 @@ class Carousel {
 
   prevSlide(event) {
     const currentlyOnFirst = this.currentSlide === 0;
-    const lastSlide = this.imgElements.length - 1;
+    const lastSlide = this.slides.length - 1;
 
     this.currentSlide = currentlyOnFirst ? lastSlide : this.currentSlide - 1;
     this.renderCurrentSlide(event);
   }
 
   nextSlide(event) {
-    const currentlyOnLast = this.currentSlide === this.imgElements.length - 1;
+    const currentlyOnLast = this.currentSlide === this.slides.length - 1;
 
     this.currentSlide = currentlyOnLast ? 0 : this.currentSlide + 1;
     this.renderCurrentSlide(event);
   }
 
-  generateImgElements() {
-    return this.imgLinks.map((link) => {
+  generateSlides() {
+    return this.data.map((data) => {
+      const slide = document.createElement("a");
       const imgElement = document.createElement("img");
-      imgElement.src = link;
-      imgElement.className = "slide";
-      return imgElement;
+
+      slide.className = "slide";
+      slide.href = data.url;
+      slide.title = data.slideTitle;
+
+      imgElement.className = "slide-image";
+      imgElement.src = data.imgSrc;
+      imgElement.alt = data.imgAlt;
+      slide.appendChild(imgElement);
+
+      return slide;
     });
   }
 
   generateNavButtons() {
     const buttons = [];
 
-    for (let i = 0; i < this.imgElements.length; i++) {
+    for (let i = 0; i < this.slides.length; i++) {
       const btn = document.createElement("button");
 
       btn.className = "jump-to-slide";
@@ -77,18 +98,18 @@ class Carousel {
   restartSlideInterval() {
     clearInterval(this.intervalId);
     this.intervalId = setInterval(() => this.nextSlide(), this.delay);
-    console.log(this.intervalId);
   }
 
   render() {
     const carousel = document.createElement("div");
+    const slidesContainer = document.createElement("div");
     const prevSlideBtn = document.createElement("button");
     const nextSlideBtn = document.createElement("button");
     const navButtonsContainer = document.createElement("div");
 
     carousel.className = "carousel";
 
-    this.slidesContainer.className = "slides-container";
+    slidesContainer.className = "slides-container";
 
     prevSlideBtn.textContent = "<";
     prevSlideBtn.title = "Slide anterior";
@@ -106,8 +127,8 @@ class Carousel {
 
     this.renderCurrentSlide();
 
-    this.slidesContainer.append(...this.imgElements);
-    carousel.appendChild(this.slidesContainer);
+    slidesContainer.append(...this.slides);
+    carousel.appendChild(slidesContainer);
     carousel.appendChild(prevSlideBtn);
     navButtonsContainer.append(...this.navButtons);
     carousel.appendChild(navButtonsContainer);
@@ -116,14 +137,31 @@ class Carousel {
   }
 }
 
-const images = [
-  "https://images.unsplash.com/photo-1710514584727-9df2497e0a6f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1557227065-79fb4eb2571c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1710831784683-73228be0a085?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1557227065-79fb4eb2571c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+const root = document.querySelector("#root");
+const imagesSrc = [];
+const data = [
+  {
+    imgSrc:
+      "https://images.unsplash.com/photo-1710514584727-9df2497e0a6f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    imgAlt: "Imagem 1",
+    slideTitle: "Imagem 1",
+    url: "https://google.com",
+  },
+  {
+    imgSrc:
+      "https://images.unsplash.com/photo-1557227065-79fb4eb2571c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    imgAlt: "Imagem 2",
+    slideTitle: "Imagem 2",
+    url: "https://google.com",
+  },
+  {
+    imgSrc:
+      "https://images.unsplash.com/photo-1710831784683-73228be0a085?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    imgAlt: "Imagem 3",
+    slideTitle: "Imagem 3",
+    url: "https://google.com",
+  },
 ];
-const carousel = new Carousel(document.querySelector("#root"), images, 3000);
-const carousel2 = new Carousel(document.querySelector("#root"), images, 500);
+const carousel = new Carousel(root, data, 30000);
 
 carousel.render();
-// carousel2.render();
