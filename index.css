@@ -1,0 +1,53 @@
+body {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 200px 1fr;
+  grid-template-rows: auto 300px 1fr 200px;
+  padding: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: rgb(240, 240, 240);
+  font-family: "Century Gothic", sans-serif;
+}
+
+h1 {
+  grid-column: 1 / -1;
+  grid-row: 1 / 2;
+  margin: 0;
+  text-align: center;
+}
+
+header {
+  grid-column: 1 / -1;
+  grid-row: 2 / 3;
+}
+
+aside {
+  grid-column: 1 / 2;
+  grid-row: 3 / 4;
+}
+
+main {
+  grid-column: 2 / -1;
+  grid-row: 3 / 4;
+}
+
+.carousel-main {
+  height: 500px;
+}
+
+footer {
+  grid-column: 1 / -1;
+  grid-row: 4 / -1;
+}
+
+@media (max-width: 500px) {
+  aside {
+    display: none;
+  }
+
+  main {
+    grid-column: 1 / -1;
+    grid-row: 3 / 4;
+  }
+}
