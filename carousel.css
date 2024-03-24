@@ -61,8 +61,22 @@ button {
   font-weight: bold;
 }
 
+.prev-slide {
+  left: 0;
+  transition: left 100ms;
+}
+
+.prev-slide:active {
+  left: -0.4rem;
+}
+
 .next-slide {
   right: 0;
+  transition: right 100ms;
+}
+
+.next-slide:active {
+  right: -0.4rem;
 }
 
 .nav-buttons-container {
