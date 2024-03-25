@@ -1,6 +1,6 @@
 # Carrossel
 
-Esta implementação de carrossel de imagens faz parte de um exercício proposto pelo site [The Odin Project](https://www.theodinproject.com/) para prática de interfaces de usuário interativas.
+Esta implementação de carrossel de imagens faz parte de um exercício proposto pelo site [The Odin Project](https://www.theodinproject.com/) para prática de interfaces de usuário interativas. Confira a [página que demonstra o funcionamento do carrossel](https://diego-moreira8.github.io/odin-carousel/)!
 
 ![Captura de tela do projeto](./images/project-screenshot.png)
 
