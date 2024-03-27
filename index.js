@@ -1,5 +1,10 @@
-import Carousel from "./Carousel.js";
-import { headerData, asideData, mainData, footerData } from "./slidesData.js";
+import Carousel from "./classes/Carousel.js";
+import {
+  headerData,
+  asideData,
+  mainData,
+  footerData,
+} from "./data/slidesData.js";
 
 const header = document.querySelector("header");
 const aside = document.querySelector("aside");
