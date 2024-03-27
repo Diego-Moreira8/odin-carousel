@@ -19,7 +19,16 @@ export default class Navbar {
       if (link.url) {
         linkElement.href = link.url;
       } else if (link.subMenu) {
-        linkElement.after(this.#createNavElements(link.subMenu));
+        const subMenu = this.#createNavElements(link.subMenu);
+        const toggleSubmenu = (e) => {
+          const mouseEnter = e.type === "mouseenter";
+          subMenu.classList[mouseEnter ? "add" : "remove"]("active");
+        };
+
+        linkElement.after(subMenu);
+
+        li.addEventListener("mouseenter", toggleSubmenu);
+        li.addEventListener("mouseleave", toggleSubmenu);
       } else {
         console.error(
           "Couldn't find a 'url' or 'subMenu' value. Check the links data object."

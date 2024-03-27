@@ -65,4 +65,11 @@
   width: 100%;
   padding: var(--nav-radius) 0 0 0;
   background-color: var(--background-color);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.nav-root > .nav-link > .nav-submenu.active {
+  opacity: 1;
+  pointer-events: all;
 }
