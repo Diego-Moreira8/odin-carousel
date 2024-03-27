@@ -87,19 +87,20 @@
   background-color: var(--background-color);
   opacity: 0;
   pointer-events: none;
-  border-radius: 0 0 var(--nav-radius) var(--nav-radius);
   transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
 }
 
 .nav-root > .nav-link > .nav-submenu {
   top: 100%;
   box-shadow: 0 4px 5px 1px hsla(0, 0%, 0%, 0.2);
+  border-radius: 0 0 var(--nav-radius) var(--nav-radius);
 }
 
 .nav-root > .nav-link > .nav-submenu > .nav-link > .nav-submenu {
   top: 0;
   left: 100%;
   box-shadow: 4px 4px 5px 1px hsla(0, 0%, 0%, 0.2);
+  border-radius: 0 var(--nav-radius) var(--nav-radius) var(--nav-radius);
 }
 
 .nav-root > .nav-link > .nav-submenu.active,
