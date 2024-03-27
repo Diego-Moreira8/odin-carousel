@@ -1,0 +1,38 @@
+.nav-root {
+  --nav-radius: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  background-color: #d1d1d1;
+  border-radius: var(--nav-radius);
+  margin: 0;
+  padding: 0;
+  color: black;
+  list-style-type: none;
+}
+
+.nav-root > .nav-link {
+  display: block;
+  flex-grow: 1;
+}
+
+.nav-root > .nav-link > a {
+  display: block;
+  padding: 0.5rem 0;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  color: inherit;
+}
+
+.nav-root > .nav-link:first-of-type > a {
+  border-radius: var(--nav-radius) 0 0 var(--nav-radius);
+}
+
+.nav-root > .nav-link:last-of-type > a {
+  border-radius: 0 var(--nav-radius) var(--nav-radius) 0;
+}
+
+.nav-root > .nav-link > a:hover {
+  background-color: #939393;
+  text-decoration: underline;
+}
