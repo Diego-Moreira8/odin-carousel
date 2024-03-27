@@ -1,5 +1,6 @@
-import Carousel from "./classes/Carousel.js";
 import Navbar from "./classes/Navbar.js";
+import Carousel from "./classes/Carousel.js";
+import navbarData from "./data/navbarData.js";
 import {
   headerData,
   asideData,
@@ -17,40 +18,10 @@ const headerCarousel = new Carousel(header, headerData, 5000);
 const asideCarousel = new Carousel(aside, asideData, 3000);
 const mainCarousel = new Carousel(main, mainData, 4000);
 const footerCarousel = new Carousel(footer, footerData, 6000);
-const navbar = new Navbar(nav, [
-  {
-    title: "Menu",
-    subMenu: [
-      { title: "Sublink 1", url: "#" },
-      { title: "Sublink 2", url: "#" },
-    ],
-  },
-  {
-    title: "Menu",
-    subMenu: [
-      { title: "Sublink 1", url: "#" },
-      { title: "Sublink 2", url: "#" },
-      { title: "Sublink 3", url: "#" },
-      { title: "Sublink 4", url: "#" },
-      { title: "Sublink 5", url: "#" },
-    ],
-  },
-  {
-    title: "Menu",
-    subMenu: [
-      { title: "Sublink 1", url: "#" },
-      { title: "Sublink 2", url: "#" },
-      { title: "Sublink 3", url: "#" },
-    ],
-  },
-  {
-    title: "Link",
-    url: "#",
-  },
-]);
+const navbar = new Navbar(nav, navbarData);
 
-navbar.render();
 headerCarousel.render();
 asideCarousel.render();
 mainCarousel.render();
 footerCarousel.render();
+navbar.render();

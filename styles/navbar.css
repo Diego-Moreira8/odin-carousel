@@ -68,10 +68,14 @@
   border-radius: 0 var(--nav-radius) var(--nav-radius) 0;
 }
 
-.nav-root > .nav-link > .nav-submenu {
+.nav-root > .nav-link > .nav-submenu > .nav-link {
+  position: relative;
+}
+
+.nav-root > .nav-link > .nav-submenu,
+.nav-root > .nav-link > .nav-submenu > .nav-link > .nav-submenu {
   position: absolute;
   z-index: 1;
-  top: 100%;
   transform: scaleY(0.75);
   transform-origin: top;
   display: flex;
@@ -84,16 +88,33 @@
   opacity: 0;
   pointer-events: none;
   border-radius: 0 0 var(--nav-radius) var(--nav-radius);
-  box-shadow: 0 4px 5px 1px hsla(0, 0%, 0%, 0.2);
   transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
 }
 
-.nav-root > .nav-link > .nav-submenu.active {
+.nav-root > .nav-link > .nav-submenu {
+  top: 100%;
+  box-shadow: 0 4px 5px 1px hsla(0, 0%, 0%, 0.2);
+}
+
+.nav-root > .nav-link > .nav-submenu > .nav-link > .nav-submenu {
+  top: 0;
+  left: 100%;
+  box-shadow: 4px 4px 5px 1px hsla(0, 0%, 0%, 0.2);
+}
+
+.nav-root > .nav-link > .nav-submenu.active,
+.nav-root > .nav-link > .nav-submenu > .nav-link > .nav-submenu.active {
   transform: scaleY(1);
   opacity: 1;
   pointer-events: all;
 }
 
-.nav-root > .nav-link > .nav-submenu > .nav-link:hover {
+.nav-root > .nav-link > .nav-submenu > .nav-link:hover,
+.nav-root
+  > .nav-link
+  > .nav-submenu
+  > .nav-link
+  > .nav-submenu
+  > .nav-link:hover {
   background-color: var(--background-color-darker);
 }
