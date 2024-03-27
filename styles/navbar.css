@@ -1,38 +1,68 @@
+.nav-root * {
+  list-style-type: none;
+}
+
+.nav-root .nav-link,
+.nav-root .nav-link-element {
+  display: block;
+  width: 100%;
+}
+
+.nav-root .nav-link-element {
+  text-align: center;
+  padding: 0.5rem 0;
+  border: none;
+  background-color: transparent;
+  color: inherit;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
 .nav-root {
+  --background-color: #d1d1d1;
+  --background-color-darker: #939393;
   --nav-radius: 0.5rem;
   display: flex;
   justify-content: space-between;
-  background-color: #d1d1d1;
+  background-color: var(--background-color);
   border-radius: var(--nav-radius);
   margin: 0;
   padding: 0;
   color: black;
-  list-style-type: none;
 }
 
 .nav-root > .nav-link {
-  display: block;
+  position: relative;
   flex-grow: 1;
 }
 
-.nav-root > .nav-link > a {
-  display: block;
-  padding: 0.5rem 0;
-  text-align: center;
-  text-decoration: none;
-  font-weight: bold;
-  color: inherit;
+.nav-root > .nav-link > .nav-link-element {
 }
 
-.nav-root > .nav-link:first-of-type > a {
+.nav-root > .nav-link:hover > .nav-link-element {
+  background-color: var(--background-color-darker);
+}
+
+.nav-root > .nav-link:hover > a.nav-link-element {
+  text-decoration: underline;
+}
+
+.nav-root > .nav-link:first-of-type > .nav-link-element {
   border-radius: var(--nav-radius) 0 0 var(--nav-radius);
 }
 
-.nav-root > .nav-link:last-of-type > a {
+.nav-root > .nav-link:last-of-type > .nav-link-element {
   border-radius: 0 var(--nav-radius) var(--nav-radius) 0;
 }
 
-.nav-root > .nav-link > a:hover {
-  background-color: #939393;
-  text-decoration: underline;
+.nav-root > .nav-link > .nav-submenu {
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  width: 100%;
+  padding: var(--nav-radius) 0 0 0;
+  background-color: var(--background-color);
 }

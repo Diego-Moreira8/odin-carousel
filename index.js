@@ -18,7 +18,14 @@ const asideCarousel = new Carousel(aside, asideData, 3000);
 const mainCarousel = new Carousel(main, mainData, 4000);
 const footerCarousel = new Carousel(footer, footerData, 6000);
 const navbar = new Navbar(nav, [
-  { title: "Link 1", url: "#" },
+  {
+    title: "Menu 1",
+    subMenu: [
+      { title: "Sublink 1", url: "#" },
+      { title: "Sublink 2", url: "#" },
+      { title: "Sublink 3", url: "#" },
+    ],
+  },
   { title: "Link 2", url: "#" },
   { title: "Link 3", url: "#" },
 ]);
