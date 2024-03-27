@@ -20,16 +20,18 @@
 }
 
 .nav-root {
-  --background-color: #d1d1d1;
-  --background-color-darker: #939393;
+  --background-color: #e7e7e7;
+  --background-color-darker: #c4c4c4;
   --nav-radius: 0.5rem;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   background-color: var(--background-color);
   border-radius: var(--nav-radius);
   margin: 0;
   padding: 0;
   color: black;
+  box-shadow: 0 0 5px 1px hsla(0, 0%, 0%, 0.2);
 }
 
 .nav-root > .nav-link {
@@ -37,19 +39,25 @@
   flex-grow: 1;
 }
 
-.nav-root > .nav-link > .nav-link-element {
-}
-
 .nav-root > .nav-link:hover > .nav-link-element {
   background-color: var(--background-color-darker);
 }
 
-.nav-root > .nav-link:hover > a.nav-link-element {
+.nav-root > .nav-link:hover > a.nav-link-element,
+.nav-root > .nav-link > .nav-submenu > .nav-link:hover > a.nav-link-element {
   text-decoration: underline;
 }
 
 .nav-root > .nav-link:first-of-type > .nav-link-element {
   border-radius: var(--nav-radius) 0 0 var(--nav-radius);
+}
+
+.nav-root > .nav-link:first-of-type:hover > button.nav-link-element {
+  border-radius: var(--nav-radius) 0 0 0;
+}
+
+.nav-root > .nav-link:last-of-type:hover > button.nav-link-element {
+  border-radius: 0 var(--nav-radius) 0 0;
 }
 
 .nav-root > .nav-link:last-of-type > .nav-link-element {
@@ -59,17 +67,29 @@
 .nav-root > .nav-link > .nav-submenu {
   position: absolute;
   z-index: 1;
+  top: 100%;
+  transform: scaleY(0.75);
+  transform-origin: top;
   display: flex;
   flex-flow: column;
   align-items: center;
-  width: 100%;
-  padding: var(--nav-radius) 0 0 0;
+  min-width: 100%;
+  width: fit-content;
+  padding: var(--nav-radius) 0;
   background-color: var(--background-color);
   opacity: 0;
   pointer-events: none;
+  border-radius: 0 0 var(--nav-radius) var(--nav-radius);
+  box-shadow: 0 4px 5px 1px hsla(0, 0%, 0%, 0.2);
+  transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
 }
 
 .nav-root > .nav-link > .nav-submenu.active {
+  transform: scaleY(1);
   opacity: 1;
   pointer-events: all;
+}
+
+.nav-root > .nav-link > .nav-submenu > .nav-link:hover {
+  background-color: var(--background-color-darker);
 }
