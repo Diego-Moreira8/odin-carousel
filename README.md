@@ -1,6 +1,6 @@
 # Carrossel
 
-Esta implementação de barra de navegação e carrossel de imagens faz parte de um exercício proposto pelo site [The Odin Project](https://www.theodinproject.com/) para prática de interfaces de usuário interativas. Confira a [página que demonstra o funcionamento do carrossel e barra de navegação](https://diego-moreira8.github.io/odin-carousel/)!
+Esta implementação de barra de navegação e carrossel de imagens faz parte de um exercício proposto pelo site [The Odin Project](https://www.theodinproject.com/) para prática de interfaces de usuário interativas. Confira a [página que demonstra o funcionamento do carrossel e barra de navegação](https://diego-moreira8.github.io/odin-navbar-and-carousel)!
 
 ![Captura de tela do projeto](./images/project-screenshot.png)
 
